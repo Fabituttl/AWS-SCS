@@ -1,0 +1,118 @@
+<html>
+
+    <head>
+    {% load static %}
+
+    <!--Bootstrap -->
+
+    <link href="{% static 'accounts/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'accounts/bootstrap/css/bootstrap.css.map' %}" rel="stylesheet">
+    <link href="{% static 'accounts/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'accounts/bootstrap/css/bootstrap.min.css.map' %}" rel="stylesheet">
+    <link href="{% static 'accounts/bootstrap/css/bootstrap-theme.css' %}" rel="stylesheet">
+     <link href="{% static 'accounts/bootstrap/css/bootstrap-theme.css.map' %}" rel="stylesheet">
+     <link href="{% static 'accounts/bootstrap/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+     <link href="{% static 'accounts/bootstrap/css/bootstrap-theme.min.css.map' %}" rel="stylesheet">
+
+     <script type="text/javascript" src="{% static 'accounts/bootstrap/js/bootstrap.js'%}"></script>
+     <script type="text/javascript" src="{% static 'accounts/bootstrap/js/bootstrap.min.js'%}"></script>
+     <script type="text/javascript" src="{% static 'accounts/bootstrap/js/npm.js'%}"></script>
+
+<!-- Chart Css & JS -->
+
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'accounts/mdbcharts/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Material Design Bootstrap -->
+    <link href="{% static 'accounts/mdbcharts/css/mdb.min.css'%}" rel="stylesheet">
+
+    <!-- Your custom styles (optional) -->
+    <link href="{% static 'accounts/mdbcharts/css/style.css' %}" rel="stylesheet">
+
+<!-- SCRIPTS -->
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="{% static 'accounts/mdbcharts/js/jquery-3.1.1.min.js'%}"></script>
+
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="{% static 'accounts/mdbcharts/js/tether.min.js'%}"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'accounts/mdbcharts/js/bootstrap.min.js'%}"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'accounts/mdbcharts/js/mdb.min.js'%}"></script>
+
+        <!-- Ende Mdb Charts -->
+
+        <!-- Mein Css -->
+
+        <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+
+        {% block head %}
+        <title>Base</title>
+
+        {% endblock %}
+    </head>
+
+    <body>
+        <br>
+        <div class="container">
+            <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Smart Chimney System</a>
+              </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                {% if user.is_authenticated %}
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'accounts:home' %}">Home</a></li>
+                    <li><a href="{% url 'accounts:view_profile' %}">Profile</a></li>
+                     <li><a href="{% url 'accounts:sensor_measures' %}">Sensoren</a></li>
+                    <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+                    <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'accounts:reset_password' %}">Reset Password</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                  <li><a href="{% url 'accounts:register' %}">Register</a></li>
+                </ul>
+                {% endif %}
+              </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+          </nav>
+        </div>
+
+
+        {% block body %}
+            <h1>Base</h1>
+
+        {% endblock %}
+
+
+
+
+    </body>
+
+
+
+
+
+
+</html>
