@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+import pprint
 
 from accounts.forms import (
     RegistrationForm,
@@ -14,6 +15,8 @@ from .models import sensormeasure
 from .models import UserProfile
 from .models import sensor, sensor_state
 
+def index(request):
+    return render(request, 'index.html')
 
 def home(request):
     numbers = [1,2,3,4,5]
@@ -71,8 +74,7 @@ def change_password(request):
 
 def sensor_measures(request):
     user = request.user
-    #user2 = request.user
     sensors = sensor.objects.filter(user=request.user.id)
-    #sensormeasures = sensormeasure.objects.filter(user=request.user.id)
-    args = {'user': user,'sensors': sensors, }#'sensormeasures':sensormeasures
+    sensormeasures = sensormeasure.objects.all()
+    args = {'user': user,'sensors': sensors, 'sensormeasures': sensormeasures }#'sensormeasures':sensormeasures
     return render(request, 'accounts/sensor_measure.html', args)

@@ -1,10 +1,10 @@
-{% extends 'accounts/../base.html' %}
+{% extends 'accounts/../index.html' %}
 
-{% block head %}
+
 <title>Profil</title>
 
 
-{% endblock %}
+
 
 
 
@@ -30,18 +30,21 @@
      <p>Seriennummer: {{ sensor.seriennummer }}</p>
      <p>Installiert: {{ sensor.created }}</p>
       <p>Installiert: {{ sensor.created }}</p>
-    {% endfor %}
+        <h2>Meine Werte</h2>
 
+       {% for  sensormeasure in sensormeasures  %}
+           {% if sensormeasure.sensor_id == sensor.id %}
+            <p>Co2: {{sensormeasure.co2  }}</p>
+            <p>Abgastemperatur: {{ sensormeasure.co2 }}</p>
+            <p>Verbrennungslufttemperatur: {{ sensormeasure.co2 }}</p>
+            <p>Feuchtigkeit: {{ sensormeasure.co2 }}</p>
+           {% endif %}
+       {% endfor %}
+{% endfor %}
 
 <!--Diagramme --->
 
-    <h2>Meine Werte</h2>
 
-
-    <p>Co2: </p>
-    <p>Abgastemperatur: {{ user.first_name }}</p>
-    <p>Verbrennungslufttemperatur: {{ user.last_name }}</p>
-    <p>Feuchtigkeit: {{ user.email }}</p>
 
 
     </div>
